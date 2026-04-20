@@ -218,7 +218,7 @@ function Home() {
         {/* --- Header --- */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-extrabold text-gray-800 uppercase tracking-tighter">
-            📊 SNK DATA MANAGEMENT
+            📊 SSI DATA MANAGEMENT
           </h1>
           <p className="text-gray-400 font-bold text-xs mt-2 tracking-widest uppercase">
             Industrial Monitoring System v1.0
