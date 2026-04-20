@@ -21,7 +21,7 @@ export default function Navbar() {
             DATA MONITORING
           </h1>
           <p className="text-[10px] text-gray-400 uppercase tracking-widest">
-            Srivaree Center
+            Best Energy
           </p>
         </div>
       </div>
@@ -31,9 +31,9 @@ export default function Navbar() {
         {/* SNK Data Button */}
         <div className="flex flex-col items-end px-4 py-1.5 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors group">
           <span className="text-[10px] font-black text-gray-400 group-hover:text-blue-500 transition-colors">
-            SNK SYSTEM
+            SSI SYSTEM
           </span>
-          <span className="text-sm font-bold text-gray-700">SNK Data</span>
+          <span className="text-sm font-bold text-gray-700">SSI Data</span>
         </div>
 
         {/* เส้นคั่นเล็กๆ */}
