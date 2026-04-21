@@ -11,12 +11,13 @@ import {
 import { useAircomSocket_ac101 } from "../services/aircomSocket_ac101";
 
 function AircomDashboard() {
-//   // เปลี่ยนมาใช้ line ให้ตรงกับ Service
-//   const [line, setLine] = useState("AC101"); 
+  //   // เปลี่ยนมาใช้ line ให้ตรงกับ Service
+  //   const [line, setLine] = useState("AC101");
 
   // เรียกใช้ Service (Hook)
-  const { currentData_ac101, history_ac101, connected_ac101 } = useAircomSocket_ac101("AC101");
-//   const { currentData_ac102, history_ac102, connected_ac102 } = useAircomSocket("AC102");
+  const { currentData_ac101, history_ac101, connected_ac101 } =
+    useAircomSocket_ac101("AC101");
+  //   const { currentData_ac102, history_ac102, connected_ac102 } = useAircomSocket("AC102");
 
   // Component สำหรับสร้างเกจวงกลม
   const Gauge = ({ value, max, label, unit, color }) => {
@@ -25,15 +26,34 @@ function AircomDashboard() {
       <div className="flex flex-col items-center bg-white p-6 rounded-3xl shadow-lg border border-gray-100 w-full">
         <div className="relative w-32 h-32">
           <svg className="w-full h-full" viewBox="0 0 36 36">
-            <path className="text-gray-200" strokeDasharray="100, 100" strokeWidth="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-            <path className={color} strokeDasharray={`${percentage}, 100`} strokeWidth="3" strokeLinecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path
+              className="text-gray-200"
+              strokeDasharray="100, 100"
+              strokeWidth="3"
+              stroke="currentColor"
+              fill="none"
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path
+              className={color}
+              strokeDasharray={`${percentage}, 100`}
+              strokeWidth="3"
+              strokeLinecap="round"
+              stroke="currentColor"
+              fill="none"
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-2xl font-black text-slate-800">{value || 0}</span>
+            <span className="text-2xl font-black text-slate-800">
+              {value || 0}
+            </span>
             <span className="text-[10px] text-gray-400 font-bold">{unit}</span>
           </div>
         </div>
-        <span className="mt-4 font-black text-gray-500 text-[10px] uppercase tracking-widest">{label}</span>
+        <span className="mt-4 font-black text-gray-500 text-[10px] uppercase tracking-widest">
+          {label}
+        </span>
       </div>
     );
   };
@@ -42,20 +62,22 @@ function AircomDashboard() {
     <div className="max-w-7xl mx-auto p-4 md:p-8 bg-gray-50 min-h-screen font-sans">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tighter uppercase">AIRCOM LIVE MONITOR</h1>
+        <h1 className="text-3xl font-black text-slate-900 tracking-tighter uppercase">
+          AIRCOM LIVE MONITOR
+        </h1>
         {/* <div className={`px-4 py-1 rounded-full text-[10px] font-black uppercase shadow-sm ${connected ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
           {connected ? "● System Live" : "○ Disconnected"}
         </div> */}
       </div>
 
-    {/*-----------------------------------------------------------------------------------------------------------------*/}
+      {/*-----------------------------------------------------------------------------------------------------------------*/}
       {/* Tabs - แก้ไข category เป็น line */}
       <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
-        <div className="flex items-center ml-5">
-            Aircom - Factory 1 (5.5)
-        </div>
+        <div className="flex items-center ml-5">Aircom - Factory 1 (5.5)</div>
 
-        <div className={`px-4 py-1 rounded-full text-[10px] font-black flex items-center uppercase shadow-sm ${connected_ac101 ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
+        <div
+          className={`px-4 py-1 rounded-full text-[10px] font-black flex items-center uppercase shadow-sm ${connected_ac101 ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}
+        >
           {connected_ac101 ? "● System Live" : "○ Disconnected"}
         </div>
         {/* {["AC101", "AC102", "AC103","STB101"].map((l) => (
@@ -73,32 +95,78 @@ function AircomDashboard() {
 
       {/* Gauges Section */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <Gauge value={currentData_ac101?.power55_f1?.toFixed(2)} max={100} label={`POWER`} unit="kW" color="text-blue-500" />
-        <Gauge value={currentData_ac101?.flow55_f1?.toFixed(2)} max={100} label={`FLOW`} unit="m³/min" color="text-orange-500" />
-        <Gauge value={currentData_ac101?.press55_f1?.toFixed(2)} max={100} label={`Pressure`} unit="Bar" color="text-emerald-500" />
-        <Gauge value={currentData_ac101?.cal55_f1} max={100} label={`kw/min`} unit="kW/min" color="text-purple-500" />
+        <Gauge
+          value={currentData_ac101?.power55_f1?.toFixed(2)}
+          max={100}
+          label={`POWER`}
+          unit="kW"
+          color="text-blue-500"
+        />
+        <Gauge
+          value={currentData_ac101?.flow55_f1?.toFixed(2)}
+          max={100}
+          label={`FLOW`}
+          unit="m³/min"
+          color="text-orange-500"
+        />
+        <Gauge
+          value={currentData_ac101?.press55_f1?.toFixed(2)}
+          max={100}
+          label={`Pressure`}
+          unit="Bar"
+          color="text-emerald-500"
+        />
+        <Gauge
+          value={currentData_ac101?.cal55_f1}
+          max={100}
+          label={`kw/min`}
+          unit="kW/min"
+          color="text-purple-500"
+        />
       </div>
 
       {/*-----------------------------------------------------------------------------------------------------------------*/}
       {/* Tabs - แก้ไข category เป็น line */}
       <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
-        <div className="flex items-center ml-5">
-            Aircom - Factory 1 (6.5)
-        </div>
+        <div className="flex items-center ml-5">Aircom - Factory 1 (6.5)</div>
 
-        <div className={`px-4 py-1 rounded-full text-[10px] font-black flex items-center uppercase shadow-sm ${connected_ac101 ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}>
+        <div
+          className={`px-4 py-1 rounded-full text-[10px] font-black flex items-center uppercase shadow-sm ${connected_ac101 ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}
+        >
           {connected_ac101 ? "● System Live" : "○ Disconnected"}
         </div>
-
-        
       </div>
-      
+
       {/* Gauges Section */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <Gauge value={currentData_ac101?.power65_f1?.toFixed(2)} max={100} label={`POWER`} unit="kW" color="text-blue-500" />
-        <Gauge value={currentData_ac101?.flow65_f1?.toFixed(2)} max={100} label={`FLOW`} unit="m³/min" color="text-orange-500" />
-        <Gauge value={currentData_ac101?.press65_f1?.toFixed(2)} max={100} label={`Pressure`} unit="Bar" color="text-emerald-500" />
-        <Gauge value={currentData_ac101?.cal65_f1} max={100} label={`kw/min`} unit="kW/min" color="text-purple-500" />
+        <Gauge
+          value={currentData_ac101?.power65_f1?.toFixed(2)}
+          max={100}
+          label={`POWER`}
+          unit="kW"
+          color="text-blue-500"
+        />
+        <Gauge
+          value={currentData_ac101?.flow65_f1?.toFixed(2)}
+          max={100}
+          label={`FLOW`}
+          unit="m³/min"
+          color="text-orange-500"
+        />
+        <Gauge
+          value={currentData_ac101?.press65_f1?.toFixed(2)}
+          max={100}
+          label={`Pressure`}
+          unit="Bar"
+          color="text-emerald-500"
+        />
+        <Gauge
+          value={currentData_ac101?.cal65_f1}
+          max={100}
+          label={`kw/min`}
+          unit="kW/min"
+          color="text-purple-500"
+        />
       </div>
 
       {/* Gauges Section */}
@@ -108,8 +176,134 @@ function AircomDashboard() {
         <Gauge value={currentData_ac102?.currentAC2} max={100} label={`Current AC101`} unit="Amp" color="text-emerald-500" />
         <Gauge value={currentData_ac102?.freqAC2} max={100} label={`Freq AC101`} unit="Hz" color="text-purple-500" />
       </div> */}
-{/*-----------------------------------------------------------------------------------------------------------------*/}
-    {/* <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
+      {/*-----------------------------------------------------------------------------------------------------------------*/}
+      <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
+        <div className="flex items-center ml-5">Aircom - Factory 2 (6.5)</div>
+
+        <div
+          className={`px-4 py-1 rounded-full text-[10px] font-black flex items-center uppercase shadow-sm ${connected_ac101 ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}
+        >
+          {connected_ac101 ? "● System Live" : "○ Disconnected"}
+        </div>
+      </div>
+
+      {/* Gauges Section */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <Gauge
+          value={currentData_ac101?.power65_f2?.toFixed(2)}
+          max={100}
+          label={`POWER`}
+          unit="kW"
+          color="text-blue-500"
+        />
+        <Gauge
+          value={currentData_ac101?.flow65_f2?.toFixed(2)}
+          max={100}
+          label={`FLOW`}
+          unit="m³/min"
+          color="text-orange-500"
+        />
+        <Gauge
+          value={currentData_ac101?.press65_f2?.toFixed(2)}
+          max={100}
+          label={`Pressure`}
+          unit="Bar"
+          color="text-emerald-500"
+        />
+        <Gauge
+          value={currentData_ac101?.cal65_f2}
+          max={100}
+          label={`kw/min`}
+          unit="kW/min"
+          color="text-purple-500"
+        />
+      </div>
+
+      <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
+        <div className="flex items-center ml-5">Aircom - Factory 3 (5.5)</div>
+
+        <div
+          className={`px-4 py-1 rounded-full text-[10px] font-black flex items-center uppercase shadow-sm ${connected_ac101 ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}
+        >
+          {connected_ac101 ? "● System Live" : "○ Disconnected"}
+        </div>
+      </div>
+
+      {/* Gauges Section */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <Gauge
+          value={currentData_ac101?.power55_f3?.toFixed(2)}
+          max={100}
+          label={`POWER`}
+          unit="kW"
+          color="text-blue-500"
+        />
+        <Gauge
+          value={currentData_ac101?.flow55_f3?.toFixed(2)}
+          max={100}
+          label={`FLOW`}
+          unit="m³/min"
+          color="text-orange-500"
+        />
+        <Gauge
+          value={currentData_ac101?.press55_f3?.toFixed(2)}
+          max={100}
+          label={`Pressure`}
+          unit="Bar"
+          color="text-emerald-500"
+        />
+        <Gauge
+          value={currentData_ac101?.cal55_f3}
+          max={100}
+          label={`kw/min`}
+          unit="kW/min"
+          color="text-purple-500"
+        />
+      </div>
+
+      <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
+        <div className="flex items-center ml-5">Aircom - Factory 3 (6.5)</div>
+
+        <div
+          className={`px-4 py-1 rounded-full text-[10px] font-black flex items-center uppercase shadow-sm ${connected_ac101 ? "bg-green-500 text-white" : "bg-red-500 text-white"}`}
+        >
+          {connected_ac101 ? "● System Live" : "○ Disconnected"}
+        </div>
+      </div>
+
+            {/* Gauges Section */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <Gauge
+          value={currentData_ac101?.power65_f3?.toFixed(2)}
+          max={100}
+          label={`POWER`}
+          unit="kW"
+          color="text-blue-500"
+        />
+        <Gauge
+          value={currentData_ac101?.flow65_f3?.toFixed(2)}
+          max={100}
+          label={`FLOW`}
+          unit="m³/min"
+          color="text-orange-500"
+        />
+        <Gauge
+          value={currentData_ac101?.press65_f3?.toFixed(2)}
+          max={100}
+          label={`Pressure`}
+          unit="Bar"
+          color="text-emerald-500"
+        />
+        <Gauge
+          value={currentData_ac101?.cal65_f3}
+          max={100}
+          label={`kw/min`}
+          unit="kW/min"
+          color="text-purple-500"
+        />
+      </div>
+
+      {/* <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
         <div className="flex items-center ml-5">
             Aircom - Factory 2 (7)
         </div>

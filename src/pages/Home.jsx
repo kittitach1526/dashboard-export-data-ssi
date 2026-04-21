@@ -14,7 +14,7 @@ function Home() {
 
   const [timePreset, setTimePreset] = useState("today");
 
-  const categories = ["Aircom (5.5)", "Aircom (6.5)", "Aircom (7)"];
+  const categories = ["Aircom (5.5)", "Aircom (6.5)"];
   const categories_power = ["Power (5.5)", "Power (6.5)", "Power (7)"];
 
   // 🔹 ฟังก์ชันดึงข้อมูลที่สะอาดขึ้น
