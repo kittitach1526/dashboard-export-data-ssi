@@ -20,7 +20,7 @@ RUN npm run build
 RUN npm install -g serve
 
 # Expose port 8564
-EXPOSE 8564
+EXPOSE 8566
 
 # Start the application
-CMD ["serve", "-s", "dist", "-l", "8564"]
+CMD ["serve", "-s", "dist", "-l", "8566"]

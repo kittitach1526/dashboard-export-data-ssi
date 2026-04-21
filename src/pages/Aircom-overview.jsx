@@ -73,10 +73,10 @@ function AircomDashboard() {
 
       {/* Gauges Section */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <Gauge value={currentData_ac101?.power_55_f1?.toFixed(2)} max={100} label={`POWER`} unit="kW" color="text-blue-500" />
-        <Gauge value={currentData_ac101?.flow_55_f1?.toFixed(2)} max={100} label={`FLOW`} unit="m³/min" color="text-orange-500" />
-        <Gauge value={currentData_ac101?.press_55_f1?.toFixed(2)} max={100} label={`Pressure`} unit="Bar" color="text-emerald-500" />
-        <Gauge value={currentData_ac101?.cal_55_f1?.toFixed(2)} max={100} label={`kw/min`} unit="kW/min" color="text-purple-500" />
+        <Gauge value={currentData_ac101?.power55_f1?.toFixed(2)} max={100} label={`POWER`} unit="kW" color="text-blue-500" />
+        <Gauge value={currentData_ac101?.flow55_f1?.toFixed(2)} max={100} label={`FLOW`} unit="m³/min" color="text-orange-500" />
+        <Gauge value={currentData_ac101?.press55_f1?.toFixed(2)} max={100} label={`Pressure`} unit="Bar" color="text-emerald-500" />
+        <Gauge value={currentData_ac101?.cal55_f1} max={100} label={`kw/min`} unit="kW/min" color="text-purple-500" />
       </div>
 
       {/*-----------------------------------------------------------------------------------------------------------------*/}
@@ -95,10 +95,10 @@ function AircomDashboard() {
       
       {/* Gauges Section */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <Gauge value={currentData_ac101?.power_65_f1?.toFixed(2)} max={100} label={`POWER`} unit="kW" color="text-blue-500" />
-        <Gauge value={currentData_ac101?.flow_65_f1?.toFixed(2)} max={100} label={`FLOW`} unit="m³/min" color="text-orange-500" />
-        <Gauge value={currentData_ac101?.press_65_f1?.toFixed(2)} max={100} label={`Pressure`} unit="Bar" color="text-emerald-500" />
-        <Gauge value={currentData_ac101?.cal_65_f1?.toFixed(2)} max={100} label={`kw/min`} unit="kW/min" color="text-purple-500" />
+        <Gauge value={currentData_ac101?.power65_f1?.toFixed(2)} max={100} label={`POWER`} unit="kW" color="text-blue-500" />
+        <Gauge value={currentData_ac101?.flow65_f1?.toFixed(2)} max={100} label={`FLOW`} unit="m³/min" color="text-orange-500" />
+        <Gauge value={currentData_ac101?.press65_f1?.toFixed(2)} max={100} label={`Pressure`} unit="Bar" color="text-emerald-500" />
+        <Gauge value={currentData_ac101?.cal65_f1} max={100} label={`kw/min`} unit="kW/min" color="text-purple-500" />
       </div>
 
       {/* Gauges Section */}
@@ -109,7 +109,7 @@ function AircomDashboard() {
         <Gauge value={currentData_ac102?.freqAC2} max={100} label={`Freq AC101`} unit="Hz" color="text-purple-500" />
       </div> */}
 {/*-----------------------------------------------------------------------------------------------------------------*/}
-    <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
+    {/* <div className="flex gap-2 mb-8 bg-gray-200 p-1 rounded-2xl w-full justify-between h-10">
         <div className="flex items-center ml-5">
             Aircom - Factory 2 (7)
         </div>
@@ -128,6 +128,7 @@ function AircomDashboard() {
         <Gauge value={currentData_ac101?.cal_7_f2?.toFixed(2)} max={100} label={`kw/min`} unit="kW/min" color="text-purple-500" />
       </div>
     
+    // </div> */}
     </div>
   );
 }

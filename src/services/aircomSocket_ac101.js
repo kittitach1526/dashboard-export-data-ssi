@@ -8,7 +8,7 @@ export const useAircomSocket_ac101 = (line) => {
 
   useEffect(() => {
     // กำหนด Path ตาม Line ที่ส่งมา (เช่น ac101, ac102)
-    const socketPath = `wss://node-red-200.sphx-dev.online/real-time/all`;
+    const socketPath = `wss://node-red-200.sphx-dev.online/ssi/realtime`;
     socketRef.current = new WebSocket(socketPath);
 
     socketRef.current.onopen = () => {
